@@ -1,0 +1,1 @@
+export const USER_NAME_ON_CHANGE = 'USER_NAME_ON_CHANGE'
