@@ -1,8 +1,13 @@
-import { USER_NAME_ON_CHANGE, LOAD_USER } from '../constant';
+import {
+  USER_NAME_ON_CHANGE,
+  LOAD_USERS,
+  LOAD_USER
+} from '../constant';
 
 const initialState = {
   name: '',
-  users: []
+  users: [],
+  currentUser: {}
 }
 
 export default (state = initialState, action) => {
@@ -12,10 +17,15 @@ export default (state = initialState, action) => {
         ...state,
         name: action.payload
       }
-    case LOAD_USER:
+    case LOAD_USERS:
       return{
         ...state,
         users: action.payload.items
+      }
+    case LOAD_USER:
+      return{
+        ...state,
+        currentUser: action.payload
       }
     default:
       return state

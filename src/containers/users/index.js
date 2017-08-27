@@ -11,7 +11,7 @@ import {
 class Users extends Component {
 
   componentDidMount() {
-    this.props.searchUser(this.props.match.params.username)
+    this.props.searchUser(this.props.match.params.term)
   }
 
   render() {
@@ -25,7 +25,9 @@ class Users extends Component {
         <div>
           <ul>
             {
-              this.props.users.map(user => <li key={user.id}>{user.login}</li>)
+              this.props.users.map(user => <li
+                onClick={() => this.props.goToSearchResults(user.login)}
+                key={user.id}>{user.login}</li>)
             }
           </ul>
         </div>
@@ -39,7 +41,7 @@ const mapStateToProps =  state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   searchUser: (name) => searchUsers(name),
-  //goToSearchResults: () => push('/details')
+  goToSearchResults: (userName) => push(`/user/${userName}`)
 }, dispatch)
 
 export default connect(

@@ -9,3 +9,8 @@ export const fetchRepos = (url) => {
   return fetch(url)
     .then(res => res.json())
 }
+
+export const getUser = (userName) => {
+  return fetch(`${baseUrl}/users/${userName}`)
+    .then(res => res.json())
+}
