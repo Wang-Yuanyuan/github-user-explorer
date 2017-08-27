@@ -1,0 +1,10 @@
+.textInput {
+  height: 34px;
+  padding: 8px;
+  font-size: 16px;
+  color: #0d2636;
+}
+
+.textInput:focus {
+  border-color: #0d2636;
+}

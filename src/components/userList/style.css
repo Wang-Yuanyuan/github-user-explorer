@@ -1,0 +1,20 @@
+.userListElement {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+  padding: 10px 0;
+}
+.userAvatar {
+  max-height: 80px;
+}
+.userInfo {
+  flex: 1;
+  text-align: left;
+  padding: 0 16px;
+}
+
+.userInfo .userName {
+  word-break: break-all;
+  max-width: 50%;
+}

@@ -7,6 +7,10 @@ import {
   searchUsers
 } from './actions'
 
+import UserList from '../../components/userList'
+
+import './style.css'
+
 
 class Users extends Component {
 
@@ -16,18 +20,23 @@ class Users extends Component {
 
   render() {
     return (
-      <div>
+      <div className="usersContainer">
         <div>
           <h1>
             User List
           </h1>
         </div>
         <div>
-          <ul>
+          <ul className="userList">
             {
-              this.props.users.map(user => <li
+              this.props.users.map(user => <UserList
                 onClick={() => this.props.goToSearchResults(user.login)}
-                key={user.id}>{user.login}</li>)
+                name={user.login}
+                avatar={user.avatar_url}
+                score={user.score}
+                key={user.id}>
+                {user.login}
+              </UserList>)
             }
           </ul>
         </div>

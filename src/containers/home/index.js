@@ -5,16 +5,26 @@ import { connect } from 'react-redux'
 import {userNameOnChange} from './actions'
 import Button from '../../components/button/index'
 import TextInput from '../../components/textInput/index'
+
+import githubLogo from '../../img/github-logo.png'
+
+import './style.css'
+
 const Home = props => (
-  <div>
-    <h1>Github User Explore</h1>
-    <form onSubmit={(evt) => {
+  <div className="homeContainer">
+    <img className="logo" src={githubLogo} />
+    <form
+      className="searchForm"
+      onSubmit={(evt) => {
       evt.preventDefault()
       props.goToSearchResults(props.name)
     }}>
-      <TextInput onChange={(evt) => props.userNameOnChange(evt.target.value)}
+      <TextInput
+        onChange={(evt) => props.userNameOnChange(evt.target.value)}
         value={props.name}
-        type='text' />
+        placeholder='search user name'
+        type='text'
+      />
       <Button>Search</Button>
     </form>
   </div>

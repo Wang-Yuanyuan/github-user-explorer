@@ -1,0 +1,19 @@
+.repoListElement {
+  display: flex;
+}
+
+.repoName {
+  word-wrap: break-word;
+  max-width: 50%;
+}
+
+.repoInfo {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 72px; 
+}
+
+.repoInfo div:first-child {
+  margin-right: 8px;
+}

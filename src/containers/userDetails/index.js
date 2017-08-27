@@ -7,6 +7,10 @@ import {
   fetchUser
 } from './actions'
 
+import './style.css'
+
+import RepoListElement from '../../components/repoListElement'
+
 
 class UserDetails extends Component {
 
@@ -15,12 +19,20 @@ class UserDetails extends Component {
   }
 
   render() {
+    const { avatar_url, login, location } = this.props.currentUser
     return (
-      <div>
-        {this.props.currentUser.login}
-        <ul>
+      <div className="userDetailsContainer">
+        <div className="userProfile">
+          <img src={avatar_url} />
+          <div className="userDetailsInfo">
+            <h3>{login}</h3>
+            <h4>{location}</h4>
+          </div>
+        </div>
+        <h4>Popular repositories</h4>
+        <ul className="repoList">
           {this.props.repos.map(
-            repo => <li key={repo.id}>{repo.name}</li>
+            repo => <RepoListElement key={repo.id} repo={repo} />
           )}
         </ul>
       </div>

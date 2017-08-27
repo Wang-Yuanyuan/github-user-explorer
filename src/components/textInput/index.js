@@ -3,7 +3,7 @@ import './style.css'
 
 
 const TextInput = props => (
-  <input {...props} />
+  <input className="textInput" {...props} />
 )
 
 

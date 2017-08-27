@@ -1,0 +1,55 @@
+.userDetailsContainer {
+  max-width: 700px;
+  margin: 16px auto;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.userProfile {
+  display: flex;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d1d5da;
+}
+
+.userProfile img {
+  max-height: 160px;
+  border-radius: 4px;
+}
+
+.userDetailsInfo {
+  text-align: left;
+  flex: 1;
+  padding: 0 16px;
+}
+
+.userDetailsInfo h3 {
+  color: #666;
+}
+
+.repoList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  flex-direction: column;
+}
+
+.repoList li {
+  padding: 16px;
+  border: 1px solid #d1d5da;
+  border-top: 0px;
+}
+
+.repoList li:first-child {
+  border-top: 1px solid #d1d5da;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.repoList li:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
