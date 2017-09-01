@@ -35,7 +35,7 @@ class UserDetails extends Component {
         <h4>Popular repositories</h4>
         <Loader hidden={!isLoading} />
         <NoResultFound hidden={isLoading || repos.length > 0} />
-        <ul className="repoList">
+        <ul hidden={isLoading} className="repoList">
           {repos.map(
             repo => <RepoListElement key={repo.id} repo={repo} />
           )}
