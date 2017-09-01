@@ -1,9 +1,6 @@
 import React from 'react'
 import './style.css'
 
-import Button from '../button'
-
-
 const RepoListElement = props => (
   <li className="repoListElement">
     <div className="repoName">{props.repo.name}</div>

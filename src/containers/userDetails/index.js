@@ -23,9 +23,10 @@ class UserDetails extends Component {
   render() {
     const { avatar_url, login, location } = this.props.currentUser
     const { repos, isLoading } = this.props
+    console.log(isLoading);
     return (
       <div className="userDetailsContainer">
-        <div className="userProfile">
+        <div hidden={isLoading} className={!isLoading && "userProfile"}>
           <img src={avatar_url} />
           <div className="userDetailsInfo">
             <h3>{login}</h3>
@@ -35,7 +36,7 @@ class UserDetails extends Component {
         <h4>Popular repositories</h4>
         <Loader hidden={!isLoading} />
         <NoResultFound hidden={isLoading || repos.length > 0} />
-        <ul hidden={isLoading} className="repoList">
+        <ul className={!isLoading && "repoList"} hidden={isLoading}>
           {repos.map(
             repo => <RepoListElement key={repo.id} repo={repo} />
           )}
