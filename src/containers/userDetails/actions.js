@@ -1,6 +1,7 @@
 import {
   LOAD_USER,
-  LOAD_REPOS
+  LOAD_REPOS,
+  LOADING_REPOS
 } from '../../constant'
 import {
   getUser,
@@ -9,9 +10,13 @@ import {
 
 export const fetchUser = (userName) => {
   return (dispatch) => {
+    dispatch({ type: LOADING_REPOS, payload: true })
     getUser(userName)
       .then(user => {
-        fetchRepos(user.repos_url).then(repos => dispatch(loadRepors(repos)))
+        fetchRepos(user.repos_url).then(repos => {
+          dispatch(loadRepors(repos))
+          dispatch({ type: LOADING_REPOS, payload: false })
+        })
         dispatch(loadUser(user))
       })
   }

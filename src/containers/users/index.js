@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import NoResultFound from '../../components/emptyResult'
+import Loader from '../../components/loader'
 
 import {
   searchUsers
@@ -19,6 +21,7 @@ class Users extends Component {
   }
 
   render() {
+    const { isLoading, users } = this.props
     return (
       <div className="usersContainer">
         <div>
@@ -27,7 +30,8 @@ class Users extends Component {
           </h1>
         </div>
         <div>
-          <ul className="userList">
+          <Loader hidden={!isLoading} />
+          <ul hidden={isLoading} className="userList">
             {
               this.props.users.map(user => <UserList
                 onClick={() => this.props.goToSearchResults(user.login)}
@@ -40,12 +44,14 @@ class Users extends Component {
             }
           </ul>
         </div>
+        <NoResultFound hidden={isLoading || users.length > 0} />
       </div>
     )
   }
 }
 const mapStateToProps =  state => ({
-  users: state.user.users
+  users: state.user.users,
+  isLoading: state.user.isLoading
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

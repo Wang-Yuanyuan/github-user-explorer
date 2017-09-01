@@ -10,6 +10,8 @@ import {
 import './style.css'
 
 import RepoListElement from '../../components/repoListElement'
+import NoResultFound from '../../components/emptyResult'
+import Loader from '../../components/loader'
 
 
 class UserDetails extends Component {
@@ -20,6 +22,7 @@ class UserDetails extends Component {
 
   render() {
     const { avatar_url, login, location } = this.props.currentUser
+    const { repos, isLoading } = this.props
     return (
       <div className="userDetailsContainer">
         <div className="userProfile">
@@ -30,8 +33,10 @@ class UserDetails extends Component {
           </div>
         </div>
         <h4>Popular repositories</h4>
+        <Loader hidden={!isLoading} />
+        <NoResultFound hidden={isLoading || repos.length > 0} />
         <ul className="repoList">
-          {this.props.repos.map(
+          {repos.map(
             repo => <RepoListElement key={repo.id} repo={repo} />
           )}
         </ul>
@@ -41,7 +46,8 @@ class UserDetails extends Component {
 }
 const mapStateToProps =  state => ({
   currentUser: state.user.currentUser,
-  repos: state.repo.repos
+  repos: state.repo.repos,
+  isLoading: state.repo.isLoading
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

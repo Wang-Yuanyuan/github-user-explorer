@@ -1,13 +1,15 @@
 import {
   USER_NAME_ON_CHANGE,
   LOAD_USERS,
-  LOAD_USER
+  LOAD_USER,
+  LOADING_USERS
 } from '../constant';
 
 const initialState = {
   name: '',
   users: [],
-  currentUser: {}
+  currentUser: {},
+  isLoading: false
 }
 
 export default (state = initialState, action) => {
@@ -18,14 +20,19 @@ export default (state = initialState, action) => {
         name: action.payload
       }
     case LOAD_USERS:
-      return{
+      return {
         ...state,
         users: action.payload.items
       }
     case LOAD_USER:
-      return{
+      return {
         ...state,
         currentUser: action.payload
+      }
+    case LOADING_USERS:
+      return {
+        ...state,
+        isLoading: action.payload
       }
     default:
       return state
